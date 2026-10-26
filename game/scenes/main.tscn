@@ -17,6 +17,12 @@ font_size = 36
 outline_size = 12
 outline_color = Color(0, 0, 0, 0.470588)
 
+[sub_resource type="LabelSettings" id="LabelSettings_ammo"]
+font = ExtResource("3_w27de")
+font_size = 20
+outline_size = 7
+outline_color = Color(0, 0, 0, 0.470588)
+
 [node name="Main" type="Node3D" unique_id=1176673032]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=529470734]
@@ -57,6 +63,27 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 text = "100%"
 label_settings = SubResource("LabelSettings_fpmwk")
+vertical_alignment = 2
+
+[node name="Ammo" type="Label" parent="HUD"]
+offset_left = 825.0
+offset_top = 630.0
+offset_right = 1235.0
+offset_bottom = 668.0
+text = "AMMO 12 / 12    RESERVE 060"
+label_settings = SubResource("LabelSettings_ammo")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Reload" type="Label" parent="HUD"]
+offset_left = 825.0
+offset_top = 592.0
+offset_right = 1235.0
+offset_bottom = 625.0
+text = "RELOADING"
+visible = false
+label_settings = SubResource("LabelSettings_ammo")
+horizontal_alignment = 2
 vertical_alignment = 2
 
 [node name="Enemies" type="Node" parent="." unique_id=2021581775]
@@ -154,3 +181,5 @@ transform = Transform3D(1.73205, 0, 1, 0, 2, 0, -1, 0, 1.73205, -30.1261, 2.4268
 transform = Transform3D(1.12202, 1.39419, -2.40776, 1.53922, 1.85165, 1.78946, 2.31773, -1.90463, -0.0227883, -0.881504, 13.0297, -30.1859)
 
 [connection signal="health_updated" from="Player" to="HUD" method="_on_health_updated"]
+[connection signal="ammo_updated" from="Player" to="HUD" method="_on_ammo_updated"]
+[connection signal="reload_state_updated" from="Player" to="HUD" method="_on_reload_state_updated"]

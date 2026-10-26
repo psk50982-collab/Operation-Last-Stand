@@ -1,6 +1,6 @@
-# [Project name]
+# Operation Last Stand
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+An offline, single-player Android FPS with survival-wave combat, built from the Kenney Godot 4.6 Starter Kit.
 
 ## Run & Operate
 
@@ -22,19 +22,22 @@ _Replace the heading above with the project's name, and this line with one sente
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `game/` — Godot project, gameplay scripts, scenes, and licensed starter assets.
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- Extend the existing Godot starter and preserve its licensed assets/notices; avoid replacing working systems without a specific need.
+- Keep the game offline and single-player; no backend, login, or monetization is required.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+An Android-first, offline FPS intended to grow through explicitly approved development stages: core combat, wave survival, touch controls, visual polish, and APK delivery.
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- Budget is ₹0. Avoid paid services, plugins, assets, and unnecessary large downloads.
+- Conserve Replit AI credits. Work only on the stage explicitly approved, report only tests actually run, then stop for approval before the next stage.
+- Do not make the game source public without explicit permission. Public GitHub Actions runners are the identified free cloud-build route; private-repository costs depend on the account's allowance.
 
 ## Gotchas
 

@@ -21,7 +21,7 @@ var rotation_target: Vector3
 
 var input_mouse: Vector2
 
-var health: int = 100
+var health: float = 100.0
 var gravity := 0.0
 
 var previously_floored := false
@@ -72,6 +72,7 @@ func _ready():
 
 	reload_timer.timeout.connect(_finish_reload)
 	weapon = weapons[weapon_index]
+	jumps_remaining = number_of_jumps
 	initiate_change_weapon(weapon_index)
 	health_updated.emit(health)
 	_emit_ammo_updated()
@@ -138,7 +139,7 @@ func handle_controls(delta):
 	movement_velocity = Vector3(input.x, 0, input.y).normalized() * movement_speed
 	
 	# Handle Controller Rotation
-	var rotation_input := Input.get_vector("camera_right", "camera_left", "camera_down", "camera_up")
+	var rotation_input := Input.get_vector("camera_left", "camera_right", "camera_down", "camera_up")
 	if rotation_input:
 		handle_rotation(rotation_input.x, rotation_input.y, true, delta)
 	
@@ -219,7 +220,7 @@ func action_shoot():
 		if !raycast.is_colliding():
 			continue
 
-		var collider := raycast.get_collider()
+	var collider = raycast.get_collider()
 		if collider is Node and collider.is_in_group("enemies") and collider.has_method("damage"):
 			collider.damage(weapon.damage)
 
@@ -273,7 +274,7 @@ func _emit_ammo_updated():
 
 func action_weapon_toggle():
 	if !is_reloading and weapons.size() > 1 and Input.is_action_just_pressed("weapon_toggle"):
-		weapon_index = wrap(weapon_index + 1, 0, weapons.size())
+		weapon_index = wrapi(weapon_index + 1, 0, weapons.size())
 		initiate_change_weapon(weapon_index)
 		
 		Audio.play("sounds/weapon_change.ogg")
