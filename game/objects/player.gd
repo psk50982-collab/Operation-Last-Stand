@@ -220,7 +220,7 @@ func action_shoot():
 		if !raycast.is_colliding():
 			continue
 
-	var collider = raycast.get_collider()
+		var collider = raycast.get_collider()
 		if collider is Node and collider.is_in_group("enemies") and collider.has_method("damage"):
 			collider.damage(weapon.damage)
 
